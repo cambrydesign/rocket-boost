@@ -5,13 +5,18 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     Rigidbody rb;
-    public float mainThrust = 1000f;
+    public float currentThrust = 0;
+    public float acceleration = 500f;
+    public float minThrust = -1000f;
+    public float maxThrust = 5000f;
     public float directionalThrust = 450f;
+    public AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -22,8 +27,26 @@ public class Movement : MonoBehaviour
     }
 
     void ProcessThrust() {
-        if (Input.GetKey(KeyCode.Space)) {
-            rb.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);                                                                            ;
+        if (Input.GetKey(KeyCode.X)) {
+            currentThrust = 0;
+        } else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S)) {
+            //
+        } else if (Input.GetKey(KeyCode.W)) {
+            if (currentThrust < maxThrust) {
+                currentThrust += acceleration * Time.deltaTime;
+            }
+        } else if (Input.GetKey(KeyCode.S)) {
+            if (currentThrust > minThrust) {
+                currentThrust -= acceleration * Time.deltaTime;
+            }
+        }
+        if (currentThrust != 0) {
+            if (!audioSource.isPlaying) {
+                audioSource.Play();
+            }
+            rb.AddRelativeForce(Vector3.up * currentThrust * Time.deltaTime);
+        } else {
+            audioSource.Stop();
         }
     }
 
@@ -40,12 +63,8 @@ public class Movement : MonoBehaviour
 
     void ApplyRotation(float rotationThisFrame)
     {
-        TogglePhysicsRotation();
+        rb.freezeRotation = true;
         transform.Rotate(Vector3.forward * rotationThisFrame * Time.deltaTime);
-        TogglePhysicsRotation();
-    }
-
-    void TogglePhysicsRotation() {
-        rb.freezeRotation = !rb.freezeRotation;
+        rb.freezeRotation = false;
     }
 }
