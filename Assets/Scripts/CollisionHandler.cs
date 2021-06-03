@@ -6,6 +6,8 @@ public class CollisionHandler : MonoBehaviour
 
     public GameManager gm;
     public Movement movement;
+    public float crashTime = 1.5f;
+    private Vector3 checkpointPosition;
 
     void Start() {
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
@@ -15,22 +17,34 @@ public class CollisionHandler : MonoBehaviour
     void OnCollisionEnter(Collision other) { 
         if (other.relativeVelocity.magnitude > 20) {
             Debug.Log("Hit the ground too fast!");
-            movement.enabled = false;
-            Invoke("CallReload", 1f);
+            StartCrashSequence();
+        } else {
+            switch (other.gameObject.tag) {
+                case "Friendly":
+                    CheckpointPosition(other.transform);
+                    break;
+                case "Finished":
+                    StartWinSequence();
+                    break;    
+                default:
+                    StartCrashSequence();
+                    break;    
+            }
         }
-        switch (other.gameObject.tag) {
-            case "Friendly":
-                Debug.Log("Friend");
-                break;
-            case "Finished":
-                movement.enabled = false;
-                Invoke("CallNextScene", 3f);
-                break;    
-            default:
-                movement.enabled = false;
-                Invoke("CallReload", 1f);
-                break;    
-        }
+    }
+
+    void CheckpointPosition(Transform checkpoint) {
+        gm.checkpointPosition = checkpoint.GetChild(0).transform.position;
+    }
+
+    void StartCrashSequence() {
+        movement.enabled = false;
+        Invoke("CallReload", crashTime);
+    }
+
+    void StartWinSequence() {
+        movement.enabled = false;
+        Invoke("CallNextScene", 3f);
     }
 
     void CallReload() {

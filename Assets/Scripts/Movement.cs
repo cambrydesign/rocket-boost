@@ -18,6 +18,7 @@ public class Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
+        transform.position = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().checkpointPosition;
     }
 
     // Update is called once per frame

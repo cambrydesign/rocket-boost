@@ -4,9 +4,16 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public SceneHandler sceneHandler;
+    public Vector3 checkpointPosition;
 
     void Start() {
         DontDestroyOnLoad(gameObject);
         sceneHandler = new SceneHandler();
+        sceneHandler.gm = this;
+        FindSpawnPoint();
+    }
+
+    public void FindSpawnPoint() {
+        checkpointPosition = GameObject.FindGameObjectWithTag("SpawnPoint").transform.position;
     }        
 }
