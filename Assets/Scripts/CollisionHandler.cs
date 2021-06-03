@@ -1,32 +1,43 @@
 using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
+
+    public GameManager gm;
+    public Movement movement;
+
+    void Start() {
+        gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        movement = GetComponent<Movement>();
+    }
+
     void OnCollisionEnter(Collision other) { 
-        Debug.Log(other.relativeVelocity.magnitude);
-        if (other.relativeVelocity.magnitude > 30) {
+        if (other.relativeVelocity.magnitude > 20) {
             Debug.Log("Hit the ground too fast!");
-            ReloadLevel();
+            movement.enabled = false;
+            Invoke("CallReload", 1f);
         }
         switch (other.gameObject.tag) {
             case "Friendly":
-            Debug.Log("Friend");
+                Debug.Log("Friend");
                 break;
             case "Finished":
-                Debug.Log("Finish");
-                break;
-            case "Fuel":
-                Debug.Log("Fuel");
+                movement.enabled = false;
+                Invoke("CallNextScene", 3f);
                 break;    
             default:
-                ReloadLevel();
+                movement.enabled = false;
+                Invoke("CallReload", 1f);
                 break;    
         }
     }
 
-void ReloadLevel() {
-        SceneManager.LoadScene(0);
+    void CallReload() {
+        gm.sceneHandler.ReloadScene();
+    }
+
+    void CallNextScene() {
+        gm.sceneHandler.LoadNextScene();
     }
 }

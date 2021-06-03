@@ -9,7 +9,8 @@ public class Movement : MonoBehaviour
     public float acceleration = 500f;
     public float minThrust = -1000f;
     public float maxThrust = 5000f;
-    public float directionalThrust = 450f;
+    public float rotationalThrust = 450f;
+    public float directionalThrust = 2000f;
     public AudioSource audioSource;
 
     // Start is called before the first frame update
@@ -24,6 +25,7 @@ public class Movement : MonoBehaviour
     {
         ProcessThrust();
         ProcessRotation();
+        ProcessSideThrust();
     }
 
     void ProcessThrust() {
@@ -51,13 +53,22 @@ public class Movement : MonoBehaviour
     }
 
     void ProcessRotation() {
-        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) 
-        {
+        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) {
             Debug.Log("Equal rotation!");
         } else if (Input.GetKey(KeyCode.A)) {
-            ApplyRotation(directionalThrust);
+            ApplyRotation(rotationalThrust);
         } else if (Input.GetKey(KeyCode.D)) {
-            ApplyRotation(-directionalThrust);
+            ApplyRotation(-rotationalThrust);
+        }
+    }
+
+    void ProcessSideThrust() {
+        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) {
+            Debug.Log("Equal force!");
+        } else if (Input.GetKey(KeyCode.Q)) {
+            rb.AddRelativeForce(Vector3.left * directionalThrust * Time.deltaTime);
+        } else if (Input.GetKey(KeyCode.E)) {
+            rb.AddRelativeForce(Vector3.right * directionalThrust * Time.deltaTime);
         }
     }
 
