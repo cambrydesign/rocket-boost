@@ -13,6 +13,10 @@ public class Movement : MonoBehaviour
     public float directionalThrust = 2000f;
     public AudioSource audioSource;
 
+    public AudioClip thrust;
+    public AudioClip death;
+    public AudioClip win;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +49,7 @@ public class Movement : MonoBehaviour
         }
         if (currentThrust != 0) {
             if (!audioSource.isPlaying) {
-                audioSource.Play();
+                audioSource.PlayOneShot(thrust);
             }
             rb.AddRelativeForce(Vector3.up * currentThrust * Time.deltaTime);
         } else {

@@ -38,13 +38,19 @@ public class CollisionHandler : MonoBehaviour
     }
 
     void StartCrashSequence() {
-        movement.enabled = false;
+        DisableMovement();
         Invoke("CallReload", crashTime);
     }
 
     void StartWinSequence() {
-        movement.enabled = false;
+        DisableMovement();
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
         Invoke("CallNextScene", 3f);
+    }
+
+    void DisableMovement() {
+        movement.enabled = false;
+        movement.currentThrust = 0;
     }
 
     void CallReload() {
