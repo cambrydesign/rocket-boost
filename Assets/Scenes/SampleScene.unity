@@ -744,10 +744,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Landing Pad
       objectReference: {fileID: 0}
-    - target: {fileID: 1032729542845956557, guid: e343407289267d4428e990e40155aaec, type: 3}
-      propertyPath: m_TagString
-      value: Finished
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e343407289267d4428e990e40155aaec, type: 3}
 --- !u!1001 &5934957680239092906
@@ -757,14 +753,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 400050832, guid: b6cafc492752eb34980689fdeb235ad4, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 13400000, guid: 15e882857ac28194f8bffc841956bf39, type: 2}
-    - target: {fileID: 400050836, guid: b6cafc492752eb34980689fdeb235ad4, type: 3}
-      propertyPath: thrust
-      value: 
-      objectReference: {fileID: 8300000, guid: 347c533d174da61458268cd573db35ad, type: 3}
     - target: {fileID: 5934957679850614309, guid: b6cafc492752eb34980689fdeb235ad4, type: 3}
       propertyPath: m_Name
       value: Rocket

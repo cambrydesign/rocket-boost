@@ -3,33 +3,40 @@ using UnityEngine;
 
 public class CollisionHandler : MonoBehaviour
 {
-
     public GameManager gm;
     public Movement movement;
     public float crashTime = 1.5f;
+    public AudioClip death;
+    public AudioClip win;
     private Vector3 checkpointPosition;
+    private AudioSource audioSource;
+    private bool isTransitioning = false;
 
     void Start() {
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         movement = GetComponent<Movement>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void OnCollisionEnter(Collision other) { 
+        if (isTransitioning) {
+            return;
+        }
         if (other.relativeVelocity.magnitude > 20) {
             Debug.Log("Hit the ground too fast!");
             StartCrashSequence();
-        } else {
-            switch (other.gameObject.tag) {
-                case "Friendly":
-                    CheckpointPosition(other.transform);
-                    break;
-                case "Finished":
-                    StartWinSequence();
-                    break;    
-                default:
-                    StartCrashSequence();
-                    break;    
-            }
+            return;
+        }
+        switch (other.gameObject.tag) {
+            case "Friendly":
+                CheckpointPosition(other.transform);
+                break;
+            case "Finished":
+                StartWinSequence();
+                break;    
+            default:
+                StartCrashSequence();
+                break;    
         }
     }
 
@@ -38,11 +45,17 @@ public class CollisionHandler : MonoBehaviour
     }
 
     void StartCrashSequence() {
+        isTransitioning = true;
+        audioSource.Stop();
+        audioSource.PlayOneShot(death);
         DisableMovement();
         Invoke("CallReload", crashTime);
     }
 
     void StartWinSequence() {
+        isTransitioning = true;
+        audioSource.Stop();
+        audioSource.PlayOneShot(win);
         DisableMovement();
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
         Invoke("CallNextScene", 3f);

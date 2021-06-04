@@ -11,11 +11,8 @@ public class Movement : MonoBehaviour
     public float maxThrust = 5000f;
     public float rotationalThrust = 450f;
     public float directionalThrust = 2000f;
-    public AudioSource audioSource;
-
+    private AudioSource audioSource;
     public AudioClip thrust;
-    public AudioClip death;
-    public AudioClip win;
 
     // Start is called before the first frame update
     void Start()

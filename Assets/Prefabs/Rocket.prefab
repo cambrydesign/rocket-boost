@@ -412,7 +412,7 @@ MonoBehaviour:
   maxThrust: 3000
   rotationalThrust: 450
   directionalThrust: 2000
-  audioSource: {fileID: 0}
+  thrust: {fileID: 8300000, guid: 347c533d174da61458268cd573db35ad, type: 3}
 --- !u!136 &400050832
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -420,7 +420,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5934957679850614309}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 15e882857ac28194f8bffc841956bf39, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 1.16
@@ -538,6 +538,8 @@ MonoBehaviour:
   gm: {fileID: 0}
   movement: {fileID: 0}
   crashTime: 1.5
+  death: {fileID: 8300000, guid: e18795173dbad914691faff3d4ac0f56, type: 3}
+  win: {fileID: 8300000, guid: 2fac04913b1d96742a2fc059de162a9e, type: 3}
 --- !u!1 &5934957679982198677
 GameObject:
   m_ObjectHideFlags: 0

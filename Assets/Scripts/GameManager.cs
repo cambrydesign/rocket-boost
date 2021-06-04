@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
     public SceneHandler sceneHandler;
     public Vector3 checkpointPosition;
 
-    void Start() {
+    void Awake() {
         DontDestroyOnLoad(gameObject);
         sceneHandler = new SceneHandler();
         sceneHandler.gm = this;
