@@ -26,6 +26,13 @@ public class CollisionHandler : MonoBehaviour
 
     void Update() {
         ProcessDebugInput();
+        CheckKillBounds();
+    }
+
+    void CheckKillBounds() {
+        if (transform.position.y < -500 && !isTransitioning) {
+            StartCrashSequence();
+        }
     }
 
     void ProcessDebugInput() {
@@ -99,6 +106,7 @@ public class CollisionHandler : MonoBehaviour
         isTransitioning = true;
         audioSource.Stop();
         audioSource.PlayOneShot(death);
+        movement.rb.freezeRotation = true;
         movement.mainThrust.Stop();
         movement.leftThrust.Stop();
         movement.rightThrust.Stop();

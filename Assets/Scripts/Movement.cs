@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    Rigidbody rb;
+    public Rigidbody rb;
     public float currentThrust = 0;
     public float acceleration = 500f;
     public float minThrust = -1000f;
@@ -33,13 +33,6 @@ public class Movement : MonoBehaviour
         ProcessThrust();
         ProcessRotation();
         ProcessSideThrust();
-        CheckKillBounds();
-    }
-
-    void CheckKillBounds() {
-        if (transform.position.y < -100) {
-            GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().sceneHandler.ReloadScene();
-        }
     }
 
     void ProcessThrust()
