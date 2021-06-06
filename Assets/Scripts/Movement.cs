@@ -13,6 +13,11 @@ public class Movement : MonoBehaviour
     public float directionalThrust = 2000f;
     private AudioSource audioSource;
     public AudioClip thrust;
+    public ParticleSystem mainThrust;
+    public ParticleSystem leftThrust;
+    public ParticleSystem rightThrust;
+    public ParticleSystem leftPushThrust;
+    public ParticleSystem rightPushThrust;
 
     // Start is called before the first frame update
     void Start()
@@ -28,50 +33,143 @@ public class Movement : MonoBehaviour
         ProcessThrust();
         ProcessRotation();
         ProcessSideThrust();
+        CheckKillBounds();
     }
 
-    void ProcessThrust() {
-        if (Input.GetKey(KeyCode.X)) {
+    void CheckKillBounds() {
+        if (transform.position.y < -100) {
+            GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().sceneHandler.ReloadScene();
+        }
+    }
+
+    void ProcessThrust()
+    {
+        HandleMainInput();
+        HandleMainThrust();
+    }
+
+    private void HandleMainInput()
+    {
+        if (Input.GetKey(KeyCode.X))
+        {
             currentThrust = 0;
-        } else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S)) {
+        }
+        else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S))
+        {
             //
-        } else if (Input.GetKey(KeyCode.W)) {
-            if (currentThrust < maxThrust) {
+        }
+        else if (Input.GetKey(KeyCode.W))
+        {
+            if (currentThrust < maxThrust)
+            {
                 currentThrust += acceleration * Time.deltaTime;
             }
-        } else if (Input.GetKey(KeyCode.S)) {
-            if (currentThrust > minThrust) {
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            if (currentThrust > minThrust)
+            {
                 currentThrust -= acceleration * Time.deltaTime;
             }
         }
-        if (currentThrust != 0) {
-            if (!audioSource.isPlaying) {
+    }
+
+    private void HandleMainThrust()
+    {
+        if (currentThrust != 0)
+        {
+            if (!audioSource.isPlaying)
+            {
                 audioSource.PlayOneShot(thrust);
             }
+            if (!mainThrust.isPlaying)
+            {
+                mainThrust.Play();
+            }
             rb.AddRelativeForce(Vector3.up * currentThrust * Time.deltaTime);
-        } else {
+        }
+        else
+        {
             audioSource.Stop();
+            mainThrust.Stop();
         }
     }
 
     void ProcessRotation() {
         if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) {
-            Debug.Log("Equal rotation!");
+            StopRotateThrust();
         } else if (Input.GetKey(KeyCode.A)) {
             ApplyRotation(rotationalThrust);
+            if (!leftThrust.isPlaying) {
+                StartLeftRotateThrust();
+            }
         } else if (Input.GetKey(KeyCode.D)) {
             ApplyRotation(-rotationalThrust);
+            if (!rightThrust.isPlaying) {
+                StartRightRotateThrust();
+            }
+        } else {
+            StopRotateThrust();
         }
     }
 
+    private void StopRotateThrust()
+    {
+        leftThrust.Stop();
+        rightThrust.Stop();
+    }
+
+    private void StartLeftRotateThrust()
+    {
+        leftThrust.Play();
+        rightThrust.Stop();
+    }
+
+    private void StartRightRotateThrust()
+    {
+        rightThrust.Play();
+        leftThrust.Stop();
+    }
+
     void ProcessSideThrust() {
-        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) {
+        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D))
+        {
             Debug.Log("Equal force!");
-        } else if (Input.GetKey(KeyCode.Q)) {
+            StopSideThrust();
+        }
+        else if (Input.GetKey(KeyCode.Q)) {
+            if (!leftPushThrust.isPlaying)
+            {
+                StartLeftThrust();
+            }
             rb.AddRelativeForce(Vector3.left * directionalThrust * Time.deltaTime);
         } else if (Input.GetKey(KeyCode.E)) {
+            if (!rightPushThrust.isPlaying)
+            {
+                StartRightThrust();
+            }
             rb.AddRelativeForce(Vector3.right * directionalThrust * Time.deltaTime);
+        } else {
+            StopSideThrust();
         }
+    }
+
+    private void StartRightThrust()
+    {
+        rightPushThrust.Play();
+        leftPushThrust.Stop();
+    }
+
+    private void StartLeftThrust()
+    {
+        leftPushThrust.Play();
+        rightPushThrust.Stop();
+    }
+
+    private void StopSideThrust()
+    {
+        leftPushThrust.Stop();
+        rightPushThrust.Stop();
     }
 
     void ApplyRotation(float rotationThisFrame)

@@ -10,6 +10,7 @@ TagManager:
   - RocketFeet
   - GameManager
   - SpawnPoint
+  - Particle
   layers:
   - Default
   - TransparentFX
