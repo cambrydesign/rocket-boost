@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
 {
@@ -19,12 +20,17 @@ public class Movement : MonoBehaviour
     public ParticleSystem leftPushThrust;
     public ParticleSystem rightPushThrust;
 
+    public Slider thrustSlider;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
         transform.position = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().checkpointPosition;
+        thrustSlider = GameObject.FindGameObjectWithTag("ThrustSlider").GetComponent<Slider>();
+        thrustSlider.maxValue = maxThrust;
+        thrustSlider.minValue = minThrust;
     }
 
     // Update is called once per frame
@@ -69,6 +75,11 @@ public class Movement : MonoBehaviour
 
     private void HandleMainThrust()
     {
+        ParticleSystem.EmissionModule em = mainThrust.emission;
+        em.rateOverTime = currentThrust > 0 ? currentThrust / 5 : -(currentThrust / 5);
+
+        thrustSlider.value = currentThrust;
+
         if (currentThrust != 0)
         {
             if (!audioSource.isPlaying)

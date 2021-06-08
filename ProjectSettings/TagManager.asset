@@ -11,6 +11,9 @@ TagManager:
   - GameManager
   - SpawnPoint
   - Particle
+  - Debris
+  - RocketLight
+  - ThrustSlider
   layers:
   - Default
   - TransparentFX

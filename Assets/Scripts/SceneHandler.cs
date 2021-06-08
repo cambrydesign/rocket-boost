@@ -4,8 +4,12 @@ using UnityEngine.SceneManagement;
 
 public class SceneHandler
 {
-    public int currentSceneIndex = 0;
+    public int currentSceneIndex;
     public GameManager gm;
+
+    public void Build() {
+        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+    }
 
     public void ReloadScene() {
         SceneManager.LoadScene(currentSceneIndex);
@@ -19,7 +23,6 @@ public class SceneHandler
             currentSceneIndex = nextSceneIndex;
         }
         ReloadScene();
-        gm.FindSpawnPoint();
     }
 
     public void LoadScene(int sceneIndex) {

@@ -110,6 +110,7 @@ public class CollisionHandler : MonoBehaviour
         movement.mainThrust.Stop();
         movement.leftThrust.Stop();
         movement.rightThrust.Stop();
+        GameObject.FindGameObjectWithTag("RocketLight").SetActive(false);
         deathParticles.Play();
         BreakApart();
         DisableMovement();
@@ -118,12 +119,14 @@ public class CollisionHandler : MonoBehaviour
 
     void BreakApart() {
         foreach (Transform child in transform) {
-            if (child.gameObject.tag != "Particle") {
+            if (child.gameObject.tag != "Debris" && child.gameObject.tag != "Particle") {
+                child.gameObject.SetActive(false);
+            } else if (child.gameObject.tag != "Particle") {
+                child.gameObject.SetActive(true);
                 child.parent = null;
                 Vector3 direction = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0);
                 direction.Normalize();
-                child.gameObject.AddComponent<Rigidbody>();
-                child.GetComponent<Rigidbody>().AddRelativeForce(direction * 1000f);   
+                child.GetComponent<Rigidbody>().AddRelativeForce(direction * 1500f);   
             }
         }
     }

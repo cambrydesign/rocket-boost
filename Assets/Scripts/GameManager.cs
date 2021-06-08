@@ -7,9 +7,9 @@ public class GameManager : MonoBehaviour
     public Vector3 checkpointPosition;
 
     void Awake() {
-        DontDestroyOnLoad(gameObject);
         sceneHandler = new SceneHandler();
         sceneHandler.gm = this;
+        sceneHandler.Build();
         FindSpawnPoint();
     }
 
