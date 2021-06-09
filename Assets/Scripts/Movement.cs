@@ -19,12 +19,14 @@ public class Movement : MonoBehaviour
     public ParticleSystem rightThrust;
     public ParticleSystem leftPushThrust;
     public ParticleSystem rightPushThrust;
+    public ParticleSystem.EmissionModule em;
 
     public Slider thrustSlider;
 
     // Start is called before the first frame update
     void Start()
     {
+        em = mainThrust.emission;
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
         transform.position = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().checkpointPosition;
@@ -75,7 +77,6 @@ public class Movement : MonoBehaviour
 
     private void HandleMainThrust()
     {
-        ParticleSystem.EmissionModule em = mainThrust.emission;
         em.rateOverTime = currentThrust > 0 ? currentThrust / 5 : -(currentThrust / 5);
 
         thrustSlider.value = currentThrust;

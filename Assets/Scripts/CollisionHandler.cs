@@ -71,7 +71,6 @@ public class CollisionHandler : MonoBehaviour
                 }
             }
         }
-        
     }
 
     void OnCollisionEnter(Collision other) { 
@@ -99,6 +98,10 @@ public class CollisionHandler : MonoBehaviour
     void CheckpointPosition(Transform checkpoint) {
         Debug.Log("Checkpointing");
         Debug.Log(gm.checkpointPosition);
+        if (!checkpoint.GetComponent<Checkpoint>().isUsed) {
+            gm.level.FindSurvivor();
+            checkpoint.GetComponent<Checkpoint>().isUsed = true;
+        }
         gm.checkpointPosition = checkpoint.GetChild(0).transform.position;
         Debug.Log(gm.checkpointPosition);
     }
@@ -108,7 +111,7 @@ public class CollisionHandler : MonoBehaviour
         audioSource.Stop();
         audioSource.PlayOneShot(death);
         movement.rb.freezeRotation = true;
-        movement.mainThrust.Stop();
+        movement.em.rateOverTime = 0;
         movement.leftThrust.Stop();
         movement.rightThrust.Stop();
         GameObject.FindGameObjectWithTag("RocketLight").SetActive(false);

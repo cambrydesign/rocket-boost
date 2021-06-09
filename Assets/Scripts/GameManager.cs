@@ -5,6 +5,8 @@ public class GameManager : MonoBehaviour
 {
     public SceneHandler sceneHandler;
     public Vector3 checkpointPosition;
+    public string levelName;
+    public Level level;
 
     private static GameManager _instance;
 
@@ -14,11 +16,18 @@ public class GameManager : MonoBehaviour
         } else {
             GameObject.Destroy(gameObject);
         }
+        RefreshLevel();
         sceneHandler = new SceneHandler();
         sceneHandler.gm = this;
         sceneHandler.Build();
         FindSpawnPoint();
         GameObject.DontDestroyOnLoad(gameObject);
+    }
+
+    public void RefreshLevel() {
+        level = new Level();
+        level.levelName = levelName;
+        level.SetUI();
     }
 
     public void FindSpawnPoint() {

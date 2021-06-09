@@ -5840,6 +5840,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5883718771745761565, guid: c0256a9df5beed945bd885d97d4ecbcd, type: 3}
+      propertyPath: levelName
+      value: Tutorial - 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5883718771745761565, guid: c0256a9df5beed945bd885d97d4ecbcd, type: 3}
+      propertyPath: maxSurvivors
+      value: 
+      objectReference: {fileID: 1856098579732901914}
+    - target: {fileID: 5883718771745761565, guid: c0256a9df5beed945bd885d97d4ecbcd, type: 3}
+      propertyPath: currentSurvivors
+      value: 
+      objectReference: {fileID: 1856098579732901915}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0256a9df5beed945bd885d97d4ecbcd, type: 3}
 --- !u!1001 &1032729543767629415
@@ -6016,6 +6028,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d718be3d1ae884a4a938a6be5d294f22, type: 3}
+--- !u!114 &1856098579732901914 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 373207099, guid: d718be3d1ae884a4a938a6be5d294f22, type: 3}
+  m_PrefabInstance: {fileID: 1856098579732901913}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1856098579732901915 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1638040865, guid: d718be3d1ae884a4a938a6be5d294f22, type: 3}
+  m_PrefabInstance: {fileID: 1856098579732901913}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5934957680239092906
 PrefabInstance:
   m_ObjectHideFlags: 0
