@@ -10,7 +10,6 @@ public class CollisionHandler : MonoBehaviour
     public AudioClip win;
     public ParticleSystem deathParticles;
     public ParticleSystem winParticles;
-
     private Vector3 checkpointPosition;
     private AudioSource audioSource;
     private bool isTransitioning = false;
@@ -36,8 +35,7 @@ public class CollisionHandler : MonoBehaviour
     }
 
     void ProcessDebugInput() {
-        if (Input.GetKeyDown(KeyCode.C))
-        {
+        if (Input.GetKeyDown(KeyCode.C)) {
             ToggleCollisions();
         }
         if (Input.GetKeyDown(KeyCode.L)) {
@@ -99,7 +97,10 @@ public class CollisionHandler : MonoBehaviour
     }
 
     void CheckpointPosition(Transform checkpoint) {
+        Debug.Log("Checkpointing");
+        Debug.Log(gm.checkpointPosition);
         gm.checkpointPosition = checkpoint.GetChild(0).transform.position;
+        Debug.Log(gm.checkpointPosition);
     }
 
     void StartCrashSequence() {

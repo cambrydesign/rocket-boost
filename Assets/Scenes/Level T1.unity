@@ -4961,21 +4961,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groupId: -1
-  mode: 1
+  mode: 7
   customPainterIndex: 0
   customPainterArgs: 
   editor_EnableHistory: 1
   editor_EnableLivePreview: 0
   forceUpdateGeometry: 0
-  brushRadius: 35
+  brushRadius: 10
   brushRadiusJitter: 0
   brushRotation: 0
   brushRotationJitter: 0
-  brushOpacity: 0.04
+  brushOpacity: 1
   brushOpacityJitter: 0
   brushScatter: 0
   brushScatterJitter: 0
-  brushColor: {r: 1, g: 1, b: 1, a: 1}
+  brushColor: {r: 1, g: 0.99309295, b: 0.4198113, a: 1}
   brushMasks:
   - {fileID: 2800000, guid: 751a58e6bc8989b4da289d9f449b346a, type: 3}
   - {fileID: 2800000, guid: 2097741c7926d4046ab31d809bdfe2ee, type: 3}
@@ -4989,7 +4989,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 36ca50646fcd9bb438393fe69f4fce4d, type: 3}
   - {fileID: 2800000, guid: c04dea6ddca855243b98689304bd531d, type: 3}
   - {fileID: 2800000, guid: a980d13c990ec08429a09a1d0c1edb47, type: 3}
-  selectedBrushMaskIndex: 1
+  selectedBrushMaskIndex: 6
   selectedSplatIndex: 0
   samplePoint: {x: -96.787315, y: -155.58246, z: 56.334595}
 --- !u!1 &2056898556

@@ -22,6 +22,7 @@ public class SceneHandler
         } else {
             currentSceneIndex = nextSceneIndex;
         }
+        GameObject.Destroy(gm.gameObject);
         ReloadScene();
     }
 
