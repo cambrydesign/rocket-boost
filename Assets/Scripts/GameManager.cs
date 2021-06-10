@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -8,6 +9,9 @@ public class GameManager : MonoBehaviour
     public string levelName;
     public Level level;
 
+    public int survivors;
+    public List<int> checkpoints;
+
     private static GameManager _instance;
 
     void Awake() {
@@ -16,18 +20,31 @@ public class GameManager : MonoBehaviour
         } else {
             GameObject.Destroy(gameObject);
         }
-        RefreshLevel();
+        level = new Level();
+        level.gm = this;
+        level.levelName = levelName;
+        level.SetUI();
+
+        level.Update();
         sceneHandler = new SceneHandler();
         sceneHandler.gm = this;
         sceneHandler.Build();
         FindSpawnPoint();
         GameObject.DontDestroyOnLoad(gameObject);
+        checkpoints = new List<int>();
     }
 
-    public void RefreshLevel() {
-        level = new Level();
-        level.levelName = levelName;
-        level.SetUI();
+    void OnLevelWasLoaded() {
+        level.Update();
+    }
+
+    void Update() {
+        
+    }
+
+    public void FindSurvivor() {
+        survivors ++;
+        level.Update();
     }
 
     public void FindSpawnPoint() {

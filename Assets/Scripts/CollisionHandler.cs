@@ -1,4 +1,5 @@
 using System.Runtime.CompilerServices;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CollisionHandler : MonoBehaviour
@@ -16,6 +17,7 @@ public class CollisionHandler : MonoBehaviour
 
     private bool debugNoClip = false;
     private bool debugNoCollision = false;
+
 
     void Start() {
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
@@ -95,15 +97,14 @@ public class CollisionHandler : MonoBehaviour
         }
     }
 
-    void CheckpointPosition(Transform checkpoint) {
-        Debug.Log("Checkpointing");
-        Debug.Log(gm.checkpointPosition);
-        if (!checkpoint.GetComponent<Checkpoint>().isUsed) {
-            gm.level.FindSurvivor();
-            checkpoint.GetComponent<Checkpoint>().isUsed = true;
+    void CheckpointPosition(Transform checkpointObject) {
+        List<int> checkpoints = gm.checkpoints;
+        Checkpoint checkpoint = checkpointObject.GetComponent<Checkpoint>();
+        if (!checkpoints.Contains(checkpoint.id)) {
+            gm.FindSurvivor();
+            checkpoints.Add(checkpoint.id);
         }
-        gm.checkpointPosition = checkpoint.GetChild(0).transform.position;
-        Debug.Log(gm.checkpointPosition);
+        gm.checkpointPosition = checkpointObject.GetChild(0).transform.position;
     }
 
     void StartCrashSequence() {
