@@ -23,17 +23,21 @@ public class Level
         foreach (GameObject checkpoint in checkpoints) {
             totalSurvivors ++;
         }
-        survivors = gm.survivors;
+
         currentSurvivors = GameObject.FindGameObjectWithTag("CurrentSurvivors").GetComponent<Text>();
         maxSurvivors = GameObject.FindGameObjectWithTag("MaxSurvivors").GetComponent<Text>();
         level = GameObject.FindGameObjectWithTag("LevelName").GetComponent<Text>();
+
         maxSurvivors.text = totalSurvivors.ToString();
         currentSurvivors.text = survivors.ToString();
+
         level.text = levelName;
     }
 
     public void Update() {
-        survivors = gm.survivors;
+        //Debug.Log(gm.survivors);
+        survivors = GameManager.survivors;
+        //Debug.Log(survivors);
         maxSurvivors.text = totalSurvivors.ToString();
         currentSurvivors.text = survivors.ToString();
     }

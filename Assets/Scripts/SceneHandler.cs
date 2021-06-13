@@ -18,11 +18,12 @@ public class SceneHandler
     public void LoadNextScene() {
         int nextSceneIndex = currentSceneIndex + 1;
         if (nextSceneIndex == SceneManager.sceneCountInBuildSettings) {
-            currentSceneIndex = 0;
+            currentSceneIndex = 1;
         } else {
             currentSceneIndex = nextSceneIndex;
         }
         GameObject.Destroy(gm.gameObject);
+        GameManager.survivors = 0;
         ReloadScene();
     }
 

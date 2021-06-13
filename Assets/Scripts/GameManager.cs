@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public string levelName;
     public Level level;
 
-    public int survivors;
+    public static int survivors;
     public List<int> checkpoints;
 
     private static GameManager _instance;
@@ -20,26 +20,28 @@ public class GameManager : MonoBehaviour
         } else {
             GameObject.Destroy(gameObject);
         }
+
         level = new Level();
         level.gm = this;
         level.levelName = levelName;
         level.SetUI();
-
         level.Update();
+
         sceneHandler = new SceneHandler();
         sceneHandler.gm = this;
         sceneHandler.Build();
+
         FindSpawnPoint();
-        GameObject.DontDestroyOnLoad(gameObject);
+
         checkpoints = new List<int>();
+
+        GameObject.DontDestroyOnLoad(gameObject);
     }
 
     void OnLevelWasLoaded() {
+        Debug.Log(survivors);
         level.Update();
-    }
-
-    void Update() {
-        
+        Debug.Log("Loaded");
     }
 
     public void FindSurvivor() {
