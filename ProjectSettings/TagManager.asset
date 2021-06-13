@@ -18,6 +18,14 @@ TagManager:
   - CurrentSurvivors
   - MaxSurvivors
   - LevelName
+  - WinScreen
+  - WinSurvivors
+  - WinCrashes
+  - WinTime
+  - Star1
+  - Star2
+  - Star3
+  - PlayerUI
   layers:
   - Default
   - TransparentFX

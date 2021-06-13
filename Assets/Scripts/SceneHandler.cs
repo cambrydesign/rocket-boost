@@ -23,7 +23,9 @@ public class SceneHandler
             currentSceneIndex = nextSceneIndex;
         }
         GameObject.Destroy(gm.gameObject);
+        GameObject.Destroy(GameObject.FindGameObjectWithTag("PlayerUI"));
         GameManager.survivors = 0;
+        GameManager.crashes = 0;
         ReloadScene();
     }
 

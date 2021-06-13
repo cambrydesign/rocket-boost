@@ -109,6 +109,7 @@ public class CollisionHandler : MonoBehaviour
 
     void StartCrashSequence() {
         isTransitioning = true;
+        GameManager.crashes++;
         audioSource.Stop();
         audioSource.PlayOneShot(death);
         movement.rb.freezeRotation = true;
@@ -159,6 +160,6 @@ public class CollisionHandler : MonoBehaviour
     }
 
     void CallNextScene() {
-        gm.sceneHandler.LoadNextScene();
+        gm.level.ShowWinScreen();
     }
 }

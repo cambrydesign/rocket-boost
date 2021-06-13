@@ -2049,7 +2049,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 722968946}
-  m_LocalRotation: {x: 0.124402046, y: 0.00000000426818, z: -5.351273e-10, w: 0.9922319}
+  m_LocalRotation: {x: 0.12440205, y: -0.00000000426818, z: 5.351272e-10, w: 0.9922319}
   m_LocalPosition: {x: -132.51, y: 39.07, z: -31.045952}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2895,7 +2895,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.124402046, y: 0.00000000426818, z: -5.351273e-10, w: 0.9922319}
+  m_LocalRotation: {x: 0.12440205, y: -0.00000000426818, z: 5.351272e-10, w: 0.9922319}
   m_LocalPosition: {x: -132.51, y: 39.07, z: -31.045952}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -5862,6 +5862,17 @@ PrefabInstance:
       objectReference: {fileID: 1856098579732901915}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0256a9df5beed945bd885d97d4ecbcd, type: 3}
+--- !u!114 &118740068409146238 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 118740069196057153, guid: c0256a9df5beed945bd885d97d4ecbcd, type: 3}
+  m_PrefabInstance: {fileID: 118740068409146237}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81c07b8b58fc3e744822d9427c82ccb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1032729543767629415
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5934,15 +5945,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1580216089, guid: d718be3d1ae884a4a938a6be5d294f22, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 118740068409146238}
     - target: {fileID: 1856098581213368874, guid: d718be3d1ae884a4a938a6be5d294f22, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1856098581213368874, guid: d718be3d1ae884a4a938a6be5d294f22, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1856098581664531998, guid: d718be3d1ae884a4a938a6be5d294f22, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}

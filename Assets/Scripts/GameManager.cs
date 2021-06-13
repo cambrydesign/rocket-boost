@@ -10,9 +10,10 @@ public class GameManager : MonoBehaviour
     public Level level;
 
     public static int survivors;
+    public static int crashes;
     public List<int> checkpoints;
 
-    private static GameManager _instance;
+    public static GameManager _instance;
 
     void Awake() {
         if (_instance == null) {
@@ -36,6 +37,10 @@ public class GameManager : MonoBehaviour
         checkpoints = new List<int>();
 
         GameObject.DontDestroyOnLoad(gameObject);
+    }
+
+    public void CallNextScene() {
+        sceneHandler.LoadNextScene();
     }
 
     void OnLevelWasLoaded() {
