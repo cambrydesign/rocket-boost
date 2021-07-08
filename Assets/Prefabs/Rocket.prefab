@@ -841,7 +841,7 @@ Light:
   m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: NaN, z: 6.302e-42, w: 5.9e-44}
+  m_BoundingSphereOverride: {x: 4.85e-43, y: 9.793056e-16, z: 4.85e-43, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -1261,6 +1261,7 @@ GameObject:
   - component: {fileID: 400050832}
   - component: {fileID: 400050838}
   - component: {fileID: 400050839}
+  - component: {fileID: 652939868}
   m_Layer: 3
   m_Name: Rocket
   m_TagString: Untagged
@@ -1364,8 +1365,8 @@ Rigidbody:
   m_GameObject: {fileID: 5934957679850614309}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0.2
-  m_AngularDrag: 0.05
+  m_Drag: 1
+  m_AngularDrag: 0.2
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
@@ -1526,6 +1527,69 @@ MonoBehaviour:
   win: {fileID: 8300000, guid: 2fac04913b1d96742a2fc059de162a9e, type: 3}
   deathParticles: {fileID: 3123526313189503064}
   winParticles: {fileID: 1683093385032103904}
+  debugMode: 0
+--- !u!108 &652939868
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5934957679850614309}
+  m_Enabled: 1
+  serializedVersion: 10
+  m_Type: 2
+  m_Shape: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1
+  m_Range: 25
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1 &5934957679982198677
 GameObject:
   m_ObjectHideFlags: 0
@@ -2407,14 +2471,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe7c8f0487da35746a8368a052b4f3e3, type: 3}
---- !u!198 &8705709863341990464 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 7510025108765097614, guid: fe7c8f0487da35746a8368a052b4f3e3, type: 3}
-  m_PrefabInstance: {fileID: 1218255538268675278}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6568931703157000376 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5458807370036647030, guid: fe7c8f0487da35746a8368a052b4f3e3, type: 3}
+  m_PrefabInstance: {fileID: 1218255538268675278}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8705709863341990464 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7510025108765097614, guid: fe7c8f0487da35746a8368a052b4f3e3, type: 3}
   m_PrefabInstance: {fileID: 1218255538268675278}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &4512981151549316252 stripped
@@ -2483,14 +2547,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62198a3a5dbb64a4f9e1618929224faa, type: 3}
---- !u!198 &1683093385032103904 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 198631066050499358, guid: 62198a3a5dbb64a4f9e1618929224faa, type: 3}
-  m_PrefabInstance: {fileID: 1556593329757086974}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1555062325899536438 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4100699973242056, guid: 62198a3a5dbb64a4f9e1618929224faa, type: 3}
+  m_PrefabInstance: {fileID: 1556593329757086974}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1683093385032103904 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198631066050499358, guid: 62198a3a5dbb64a4f9e1618929224faa, type: 3}
   m_PrefabInstance: {fileID: 1556593329757086974}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2242266449171486599
@@ -2795,13 +2859,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4b06ebeeaf0ac044aeed997d98443c2, type: 3}
---- !u!198 &5928175580898642458 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 584678573886053986, guid: d4b06ebeeaf0ac044aeed997d98443c2, type: 3}
-  m_PrefabInstance: {fileID: 6510004219034555512}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5830853582128988242 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 771087676723270698, guid: d4b06ebeeaf0ac044aeed997d98443c2, type: 3}
+  m_PrefabInstance: {fileID: 6510004219034555512}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &5928175580898642458 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 584678573886053986, guid: d4b06ebeeaf0ac044aeed997d98443c2, type: 3}
   m_PrefabInstance: {fileID: 6510004219034555512}
   m_PrefabAsset: {fileID: 0}

@@ -15,6 +15,8 @@ public class CollisionHandler : MonoBehaviour
     private AudioSource audioSource;
     private bool isTransitioning = false;
 
+    public bool debugMode = false;
+
     private bool debugNoClip = false;
     private bool debugNoCollision = false;
 
@@ -37,14 +39,16 @@ public class CollisionHandler : MonoBehaviour
     }
 
     void ProcessDebugInput() {
-        if (Input.GetKeyDown(KeyCode.C)) {
-            ToggleCollisions();
-        }
-        if (Input.GetKeyDown(KeyCode.L)) {
-            CallNextScene();
-        }
-        if (Input.GetKeyDown(KeyCode.N)) {
-            ToggleNoClip();
+        if (debugMode) {
+            if (Input.GetKeyDown(KeyCode.C)) {
+                ToggleCollisions();
+            }
+            if (Input.GetKeyDown(KeyCode.L)) {
+                CallNextScene();
+            }
+            if (Input.GetKeyDown(KeyCode.N)) {
+                ToggleNoClip();
+            }
         }
     }
 

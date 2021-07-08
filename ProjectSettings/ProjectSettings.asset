@@ -568,13 +568,14 @@ PlayerSettings:
   webGLTemplate: APPLICATION:Default
   webGLAnalyzeBuildSize: 0
   webGLUseEmbeddedResources: 0
-  webGLCompressionFormat: 1
+  webGLCompressionFormat: 2
   webGLWasmArithmeticExceptions: 0
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
     1: GRIFFIN;GRIFFIN_URP
+    13: GRIFFIN;GRIFFIN_URP
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}

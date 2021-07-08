@@ -39,6 +39,10 @@ public class GameManager : MonoBehaviour
         GameObject.DontDestroyOnLoad(gameObject);
     }
 
+    public void CallMainMenu() {
+        sceneHandler.LoadMainMenu();
+    }
+
     public void CallNextScene() {
         sceneHandler.LoadNextScene();
     }

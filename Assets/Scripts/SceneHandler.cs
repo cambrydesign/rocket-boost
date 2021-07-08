@@ -29,6 +29,13 @@ public class SceneHandler
         ReloadScene();
     }
 
+    public void LoadMainMenu() {
+        GameObject.Destroy(gm.gameObject);
+        GameObject.Destroy(GameObject.FindGameObjectWithTag("PlayerUI"));
+        currentSceneIndex = 0;
+        ReloadScene();
+    }
+
     public void LoadScene(int sceneIndex) {
         currentSceneIndex = sceneIndex;
         ReloadScene();
